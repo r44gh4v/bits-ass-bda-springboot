@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Grotesk:wght@400;500;600&display=swap");
+
+:root {
+    --ink: #1f1b16;
+    --muted: #5d5a55;
+    --accent: #e4572e;
+    --accent-2: #0e7c7b;
+    --card: rgba(255, 255, 255, 0.92);
+    --border: #e0d8ca;
+    --shadow: 0 20px 50px rgba(24, 20, 14, 0.12);
+    --bg-1: #f7f1e8;
+    --bg-2: #eef5ff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Space Grotesk", "Segoe UI", sans-serif;
+    color: var(--ink);
+    background: radial-gradient(circle at top left, #fff7ec 0%, transparent 45%),
+        radial-gradient(circle at bottom right, #e8f6f5 0%, transparent 50%),
+        linear-gradient(140deg, var(--bg-1), var(--bg-2));
+    animation: fadeIn 0.6s ease-out;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    width: min(980px, 92vw);
+    margin: 48px auto;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 32px 36px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+    animation: rise 0.6s ease-out;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+h1 {
+    margin: 0 0 6px;
+    font-family: "Fraunces", "Times New Roman", serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    letter-spacing: 0.5px;
+}
+
+.subtitle {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1rem;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.98rem;
+}
+
+.table thead {
+    text-align: left;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.table th,
+.table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.table tbody tr {
+    animation: fadeUp 0.4s ease-out both;
+}
+
+.table tbody tr:nth-child(1) { animation-delay: 0.05s; }
+.table tbody tr:nth-child(2) { animation-delay: 0.1s; }
+.table tbody tr:nth-child(3) { animation-delay: 0.15s; }
+.table tbody tr:nth-child(4) { animation-delay: 0.2s; }
+.table tbody tr:nth-child(5) { animation-delay: 0.25s; }
+.table tbody tr:nth-child(6) { animation-delay: 0.3s; }
+.table tbody tr:nth-child(7) { animation-delay: 0.35s; }
+.table tbody tr:nth-child(8) { animation-delay: 0.4s; }
+.table tbody tr:nth-child(9) { animation-delay: 0.45s; }
+.table tbody tr:nth-child(10) { animation-delay: 0.5s; }
+
+.empty {
+    text-align: center;
+    color: var(--muted);
+    padding: 22px 0;
+}
+
+.form {
+    display: grid;
+    gap: 18px;
+}
+
+.form-row {
+    display: grid;
+    gap: 8px;
+}
+
+label {
+    font-weight: 600;
+    color: var(--muted);
+}
+
+input,
+select {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    font-size: 1rem;
+    background: #fff;
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid rgba(228, 87, 46, 0.25);
+    border-color: var(--accent);
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(228, 87, 46, 0.2);
+}
+
+.button-secondary {
+    background: var(--accent-2);
+}
+
+.alert {
+    background: rgba(228, 87, 46, 0.12);
+    color: #9a2f13;
+    border: 1px solid rgba(228, 87, 46, 0.4);
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 720px) {
+    .container {
+        padding: 24px;
+        margin: 28px auto;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px 8px;
+    }
+}
